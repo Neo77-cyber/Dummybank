@@ -1,0 +1,259 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Nova Credit Bank LLC</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon 2.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon 2.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor2/bootstrap 2/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor2/bootstrap-icons 2/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor2/boxicons 2/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor2/quill 2/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor2/quill 2/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor2/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor2/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css2/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'portfolio' %}" class="logo d-flex align-items-center">
+
+        <span class="d-none d-lg-block">Nova Credit Bank</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <nav class="header-nav ms-auto">
+      <li class="nav-item dropdown pe-3">
+        <span>{{user.username}}</span>
+      </li><!-- End Profile Nav -->
+
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'portfolio' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+    </ul>
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'logout' %}">
+          <i class="bi bi-grid"></i>
+          <span>Create Pin</span>
+        </a>
+        <ul class="sidebar-nav" id="sidebar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'logout' %}">
+              <i class="bi bi-grid"></i>
+              <span>Logout</span>
+            </a>
+          </li><!-- End Dashboard Nav -->
+      </li><!-- End Components Nav -->
+    </ul>
+    </li><!-- End Forms Nav -->
+    </li><!-- End Icons Nav -->
+  </aside>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Transfer Funds</h1>
+      <nav>
+        <ol class="breadcrumb">
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Payment Transfer</h5>
+              <p>Please complete this transfer form as accuratle as possible and endeavour that the beneficiary account
+                intended is correctly typed</p>
+              <!-- Browser Default Validation -->
+              <section id="contact" class="contact">
+                <style>
+                  /* *, *:before, *:after {
+                 -moz-box-sizing: border-box;
+                 -webkit-box-sizing: border-box;
+                 box-sizing: border-box;
+               } */
+
+                  body {
+                    font-family: 'Nunito', sans-serif;
+                    color: #384047;
+                  }
+
+                  form {
+                    margin: 10px 2px;
+                    padding: 30px 80px;
+                    background: #f4f7f8;
+                    border-radius: 8px;
+                  }
+
+                  h1 {
+                    margin: 0 0 30px 0;
+                    text-align: center;
+                  }
+
+                  .summernote {
+                    margin-top: 200px;
+                  }
+
+
+                  input[type="text"],
+                  input[type="password"],
+                  input[type="date"],
+                  input[type="datetime"],
+                  input[type="email"],
+                  input[type="number"],
+                  textarea,
+                  select {
+                    background: rgba(255, 255, 255, 0.1);
+                    border: none;
+                    font-size: 16px;
+                    height: auto;
+                    margin: 0;
+                    outline: 0;
+                    padding: 15px;
+                    width: 100%;
+                    background-color: #e8eeef;
+                    color: #8a97a0;
+                    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+                    margin-bottom: 30px;
+                  }
+
+                  input[type="radio"],
+                  input[type="checkbox"] {
+                    margin: 0 4px 8px 0;
+                  }
+
+                  select {
+                    padding: 6px;
+                    height: 32px;
+                    border-radius: 2px;
+                  }
+
+                  .cool {
+                    padding: 19px 39px 18px 39px;
+                    color: #FFF;
+                    background-color: #4bc970;
+                    font-size: 18px;
+                    text-align: center;
+                    font-style: normal;
+                    border-radius: 5px;
+                    width: 30%;
+                    border: 1px solid #3ac162;
+                    border-width: 1px 1px 3px;
+                    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+                    margin-bottom: 10px;
+                  }
+
+                  fieldset {
+                    margin-bottom: 30px;
+                    border: none;
+                  }
+
+                  legend {
+                    font-size: 1.4em;
+                    margin-bottom: 10px;
+                  }
+
+                  label {
+                    display: block;
+                    margin-bottom: 8px;
+                  }
+
+                  label.light {
+                    font-weight: 300;
+                    display: inline;
+                  }
+
+                  .number {
+                    background-color: #5fcf80;
+                    color: #fff;
+                    height: 30px;
+                    width: 30px;
+                    display: inline-block;
+                    font-size: 0.8em;
+                    margin-right: 4px;
+                    line-height: 30px;
+                    text-align: center;
+                    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+                    border-radius: 100%;
+                  }
+
+                  @media screen and (max-width: 480px) {
+
+                    form {
+                      width: fit-content;
+                    }
+
+                  }
+                </style>
+                {% for message in messages %}
+                <h5>{{message}}</h5>
+                {% endfor %}
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  {{form.as_div}}
+                  <input class="btn btn-primary" type="submit" value="Transfer">
+                </form>
+              </section><!-- End Contact Section -->
+              <!-- End Browser Default Validation -->
+              <!-- ======= Footer ======= -->
+            </div>
+            </footer><!-- End Footer -->
+
+            <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
+
+            <!-- Vendor JS Files -->
+            <script src="{% static 'assets/vendor2/apexcharts/apexcharts.min.js' %}"></script>
+            <script src="{% static 'assets/vendor2/bootstrap 2/js/bootstrap.bundle.min.js' %}"></script>
+            <script src="{% static 'assets/vendor2/chart.js/chart.min.js' %}"></script>
+            <script src="{% static 'assets/vendor2/echarts/echarts.min.js' %}"></script>
+            <script src="{% static 'assets/vendor2/quill 2/quill.min.js' %}"></script>
+            <script src="{% static 'assets/vendor2/simple-datatables/simple-datatables.js' %}"></script>
+            <script src="{% static 'assets/vendor2/tinymce/tinymce.min.js' %}"></script>
+            <script src="{% static 'assets/vendor2/php-email-form 2/validate.js' %}"></script>
+
+            <!-- Template Main JS File -->
+            <script src="{% static 'assets/js2/main 2.js' %}"></script>
+
+</body>
+
+</html>

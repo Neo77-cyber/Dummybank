@@ -71,7 +71,7 @@
     </ul>
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        
+       
         <ul class="sidebar-nav" id="sidebar-nav">
           <li class="nav-item">
             <a class="nav-link " href="{% url 'logout' %}">
@@ -97,9 +97,9 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Payment Transfer</h5>
-              <p>Please complete this transfer form as accuratle as possible and endeavour that the beneficiary account
-                intended is correctly typed</p>
+              <h5 class="card-title">Income tracker</h5>
+              <p>This section helps you create a yearly saving budget, We help you save 10% of your income monthly. </p>
+              
               <!-- Browser Default Validation -->
               <section id="contact" class="contact">
                 <style>
@@ -222,13 +222,15 @@
                   }
                 </style>
                 {% for message in messages %}
-                <h5>{{message}}</h5>
+                <h5>{{ message }}</h5>
                 {% endfor %}
-                <form action="" method="POST">
-                  {% csrf_token %}
-                  {{form.as_div}}
-                  <input class="btn btn-primary" type="submit" value="Transfer">
-                </form>
+            
+            <form action="{% url 'updatebalance' %}" method="POST">
+                {% csrf_token %}
+                {{ update_pin_form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Update">
+            </form>
+            
               </section><!-- End Contact Section -->
               <!-- End Browser Default Validation -->
               <!-- ======= Footer ======= -->

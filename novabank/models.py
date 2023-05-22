@@ -19,7 +19,7 @@ class Portfolio(models.Model):
     pin = models.IntegerField(null= True, blank= True)
 
     def __str__(self):
-        return self.first_name 
+        return self.first_name if self.first_name else ''
     
     @property
     def imageURL(self):
@@ -31,6 +31,7 @@ class Portfolio(models.Model):
     
 class Transactions(models.Model):
     username = models.ForeignKey(Portfolio, on_delete=models.SET_NULL, blank= True, null = True)
+    id = models.AutoField(primary_key=True)
     beneficiary_name = models.CharField(max_length=200)
     bank_name = models.CharField(max_length=200)
     branch_name = models.CharField(max_length=200)
@@ -47,6 +48,15 @@ class Transactions(models.Model):
 
     def __str__(self):
         return self.beneficiary_name
+    
+class IncomeTracker(models.Model):
+    username = models.ForeignKey(Portfolio, on_delete=models.SET_NULL, blank= True, null = True)
+    groceries = models.IntegerField()
+    internet = models.IntegerField()
+    miscelleneous = models.IntegerField()
+    
+
+    
     
 
 

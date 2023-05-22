@@ -86,7 +86,7 @@
   </aside>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Transfer Funds</h1>
+      <h1>Create Profile</h1>
       <nav>
         <ol class="breadcrumb">
         </ol>
@@ -97,9 +97,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Payment Transfer</h5>
-              <p>Please complete this transfer form as accuratle as possible and endeavour that the beneficiary account
-                intended is correctly typed</p>
+              <h5 class="card-title">Create Profile</h5>
               <!-- Browser Default Validation -->
               <section id="contact" class="contact">
                 <style>
@@ -221,13 +219,13 @@
 
                   }
                 </style>
-                {% for message in messages %}
-                <h5>{{message}}</h5>
-                {% endfor %}
-                <form action="" method="POST">
+                {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+                {% endif %}
+                <form action="{% url 'createprofile' %}" method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
-                  {{form.as_div}}
-                  <input class="btn btn-primary" type="submit" value="Transfer">
+                  {{createprofileform.as_div}}
+                  <input class="btn btn-primary" type="submit" value="Create Profile">
                 </form>
               </section><!-- End Contact Section -->
               <!-- End Browser Default Validation -->

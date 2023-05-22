@@ -69,12 +69,8 @@
 
         </li><!-- End Messages Nav -->
 
-        {% for userinfo in portfolio %}
+        
         <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src={{userinfo.profile_image.url}} alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.username}}</span>
-          </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
@@ -119,6 +115,25 @@
           <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Transfer Funds</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
+          <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'createprofile' %}">
+                <i class="bi bi-grid"></i>
+                <span>CreateProfile</span>
+              </a>
+              <ul class="sidebar-nav" id="sidebar-nav">
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'updatebalance' %}">
+                    <i class="bi bi-grid"></i>
+                    <span>Update Pin/Balance</span>
+                  </a>
+                </a>
+                <ul class="sidebar-nav" id="sidebar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link " href="{% url 'incometracker' %}">
+                      <i class="bi bi-grid"></i>
+                      <span>Income Tracker</span>
+                    </a>
           <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
               <a href="{% url 'transfer' %}">
@@ -164,7 +179,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{balance}}</h6>
+                      <h6>{{account_total}}</h6>
                       <span class="text-success small pt-1 fw-bold"></span> <span
                         class="text-muted small pt-2 ps-1"></span>
                     </div>
@@ -185,7 +200,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{balance}}</h6>
+                      <h6>{{account_total}}</h6>
                       <span class="text-success small pt-1 fw-bold"></span> <span
                         class="text-muted small pt-2 ps-1"></span>
                     </div>
@@ -206,7 +221,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{balance}}</h6>
+                      <h6>{{account_total}}</h6>
                       <span class="text-danger small pt-1 fw-bold"></span> <span
                         class="text-muted small pt-2 ps-1"></span>
                     </div>
@@ -238,7 +253,7 @@
                       <tbody>
                         {% for transaction in amount_to_transfer %}
                         <tr>
-                          <th scope="row"><a href="#">{{id}}</a></th>
+                          <th scope="row"><a href="#"></a></th>
                           <td>S95752587</td>
                           <td><a class="text-primary">Debit</a></td>
                           <td>${{transaction}}</td>
@@ -322,6 +337,7 @@
         </div><!-- End Right side columns -->
       </div>
     </section>
+    {% for userinfo in portfolio %}
     <section class="section profile">
       <div class="row">
         <div class="col-xl-12">

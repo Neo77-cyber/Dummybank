@@ -6,12 +6,13 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('services/', views.services, name='services'),
+    path('register/', views.register, name = 'register'),
     path('signin/', views.signin, name='signin'),
-    path('transfer/', views.transfer, name = 'transfer'),
     path('logout', views.logout, name = 'logout'),
+    path('createprofile/', views.createprofile, name='createprofile'),
     path('portfolio/', views.portfolio, name = 'portfolio'),
-    # path('test/', views.transfer_funds, name = 'test'),
-
-    
+    path('updatebalance/', views.updatebalance, name = 'updatebalance'),   
+    path('transfer/', views.transfer, name = 'transfer'),
+    path('incometracker', views.incometracker, name = 'incometracker')
     
 ]

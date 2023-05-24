@@ -18,10 +18,9 @@ To get started with the Dummy Bank system, follow these steps:
 2. Navigate to the project directory: `cd novaprojectz`
 3. Create a virtual environment: `pipenv shell`
 5. Install dependencies: `pipenv install -r requirements.txt`
-6. Set up environment variables: Configure the necessary environment variables (database credentials, API keys, etc.) in a `.env` file or your preferred method.
-7. Apply database migrations: `python manage.py migrate`
-8. Start the development server: `python manage.py runserver`
-9. Access the app in your browser at `http://localhost:8000`
+6. Apply database migrations: `python manage.py migrate`
+7. Start the development server: `python manage.py runserver`
+8. Access the app in your browser at `http://localhost:8000`
 
 ## Technologies Used
 - Django: Python web framework

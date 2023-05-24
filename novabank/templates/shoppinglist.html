@@ -86,7 +86,7 @@
   </aside>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Transfer Funds</h1>
+      <h1>Shopping List</h1>
       <nav>
         <ol class="breadcrumb">
         </ol>
@@ -98,7 +98,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Income tracker</h5>
-              <p>This section helps you create a yearly saving budget, We help you save 10% of your income monthly. </p>
+              <p>This section helps you create a yearly saving budget, We help you save 20% of your income monthly. </p>
               
               <!-- Browser Default Validation -->
               <section id="contact" class="contact">
@@ -225,11 +225,43 @@
                 <h5>{{ message }}</h5>
                 {% endfor %}
             
-            <form action="{% url 'updatebalance' %}" method="POST">
+            <form action="" method="POST">
                 {% csrf_token %}
-                {{ update_pin_form.as_p }}
+                {{ shoppinglist_form.as_p }}
                 <input class="btn btn-primary" type="submit" value="Update">
             </form>
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Todo item</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              {% for shopitem in shopitems %}
+              <tbody>
+                <tr>
+                  <th scope="row">{{shopitem.id}}</th>
+                  <td>{{shopitem.item}}</td>
+                  <td>{{shopitem.price}}</td>
+                  <td>
+                    <form action="{% url 'deleteshoppingitem' shopitem.id %}" method="POST">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <form action="{% url 'shop' shopitem.id %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="shopping_price" value="{{ shopitem.price }}">
+                      <button type="submit" class="btn btn-success ms-1">Shop</button>
+                    </form>   
+                  </td>
+              </tbody>
+              {% endfor %}
+            </table>
+            
+            
+            
             
               </section><!-- End Contact Section -->
               <!-- End Browser Default Validation -->

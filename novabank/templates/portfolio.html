@@ -130,9 +130,9 @@
                 </a>
                 <ul class="sidebar-nav" id="sidebar-nav">
                   <li class="nav-item">
-                    <a class="nav-link " href="{% url 'incometracker' %}">
+                    <a class="nav-link " href="{% url 'shoppinglist' %}">
                       <i class="bi bi-grid"></i>
-                      <span>Income Tracker</span>
+                      <span>Shoppinglist</span>
                     </a>
           <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
@@ -260,6 +260,15 @@
                           <td><span class="badge bg-success">Approved</span></td>
                         </tr> 
                         {% endfor %}
+                        {% for transaction in shopitem.transaction_set.all %}
+                          <tr>
+                            <th scope="row"></th>
+                            <td></td>
+                            <td></td>
+                            <td>${{ transaction.amount }}</td>
+                            <td><span class="badge bg-success">Approved</span></td>
+                          </tr>
+                          {% endfor %}
                       </tbody>
                     </table>
   

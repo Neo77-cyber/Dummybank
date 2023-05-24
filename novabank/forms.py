@@ -1,5 +1,5 @@
 from django import forms
-from .models import Transactions, Portfolio
+from .models import Transactions, Portfolio, ShoppingList
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -23,4 +23,9 @@ class PortfolioUpdateForm(forms.ModelForm):
     class Meta:
         model = Portfolio
         fields = ['pin', 'account_total']
+
+class ShoppingListForm(forms.ModelForm):
+    class Meta:
+        model = ShoppingList
+        fields = ['item', 'price']
 

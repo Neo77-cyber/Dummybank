@@ -13,6 +13,9 @@ urlpatterns = [
     path('portfolio/', views.portfolio, name = 'portfolio'),
     path('updatebalance/', views.updatebalance, name = 'updatebalance'),   
     path('transfer/', views.transfer, name = 'transfer'),
-    path('incometracker', views.incometracker, name = 'incometracker')
+    path('shoppinglist/', views.shoppinglist, name = 'shoppinglist'),
+    path('del/<int:pk>/', views.deleteshoppingitem, name='deleteshoppingitem'),
+    path('shop/<int:pk>/', views.shop, name='shop'),
+
     
 ]

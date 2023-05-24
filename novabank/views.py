@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import  auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Portfolio, Transactions
+from .models import Portfolio, Transactions, ShoppingList, ShoppingTransaction
 import requests
-from .forms import TransactionsForm, UserForm, PortfolioUpdateForm, CreateProfileForm
+from .forms import TransactionsForm, UserForm, PortfolioUpdateForm, CreateProfileForm, ShoppingListForm
 from django.contrib import messages
 from django.db.models import Sum
 from django.db import IntegrityError
@@ -131,20 +131,73 @@ def transfer(request):
 
     return render(request, 'transfer.html', {'form': form})
 
-def incometracker(request):
-    createprofile_form = CreateProfileForm()
-    if request.method == 'POST':
-            createprofile_form = CreateProfileForm(request.POST, request.FILES)
-            if createprofile_form.is_valid():
-        
-                    new_profile = createprofile_form.save(commit=False)
-                    new_profile.username = request.user
-                    new_profile.save()
-                    createprofile_form = CreateProfileForm()
-                    return render(request, 'incometracker.html')
-               
 
-    return render (request, 'incometracker.html')
+
+@login_required
+def shoppinglist(request):
+    log_user = request.user
+    shoppinglist_form = ShoppingListForm()
+
+    if request.method == 'POST':
+        shoppinglist_form = ShoppingListForm(request.POST)
+        if shoppinglist_form.is_valid():
+            try:
+                shoppinglist = shoppinglist_form.save(commit=False)
+                portfolio_instance = Portfolio.objects.get(username=log_user)
+                shoppinglist.username = portfolio_instance
+                shoppinglist.save()
+                shoppinglist_form = ShoppingListForm()
+            except IntegrityError:
+                pass
+
+    portfolio_instance = Portfolio.objects.get(username=log_user)
+    shopitems = ShoppingList.objects.filter(username=portfolio_instance).prefetch_related('shoppingtransaction_set')
+
+    return render(request, 'shoppinglist.html', {'shoppinglist_form': shoppinglist_form, 'shopitems': shopitems})
+
+
+@login_required(login_url='home')
+def deleteshoppingitem(request, pk):
+    
+        delete_item = ShoppingList.objects.get(id=pk)
+        delete_item.delete()
+        return redirect('shoppinglist')
+
+
+
+@login_required(login_url='home')
+def shop(request, pk):
+    log_user = request.user
+
+    account_total = Portfolio.objects.filter(username=log_user).values()[0]['account_total']
+    budget_limit = account_total * 0.8  
+
+    if request.method == 'POST':
+        shopping_price = request.POST['shopping_price']
+
+        if int(shopping_price) <= budget_limit:
+            new_account_total = account_total - int(shopping_price)
+            Portfolio.objects.filter(username=log_user).update(account_total=new_account_total)
+
+            shoppinglist = get_object_or_404(ShoppingList, id=pk)
+            transaction = ShoppingTransaction(user=log_user, shopitem=shoppinglist, amount=shopping_price)
+            transaction.save()
+
+            messages.success(request, 'Purchase Successful!')
+            return redirect('shoppinglist')
+        else:
+            
+            error_message = "Exceeded budget limit. You cannot spend more than ${0}".format(budget_limit)
+            messages.error(request, error_message)
+            return redirect('shoppinglist')
+
+    
+    return redirect('shoppinglist')
+
+    
+
+
+
 
 
 

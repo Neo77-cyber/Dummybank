@@ -49,14 +49,23 @@ class Transactions(models.Model):
     def __str__(self):
         return self.beneficiary_name
     
-class IncomeTracker(models.Model):
+class ShoppingList(models.Model):
     username = models.ForeignKey(Portfolio, on_delete=models.SET_NULL, blank= True, null = True)
-    groceries = models.IntegerField()
-    internet = models.IntegerField()
-    miscelleneous = models.IntegerField()
-    
+    item = models.CharField(max_length=200)
+    price = models.IntegerField()
+    completed = models.BooleanField(default=False)
 
-    
+
+    def __str__(self):
+        return self.item
+
+class ShoppingTransaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    shopitem = models.ForeignKey(ShoppingList, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return str(self.amount)
     
 
 

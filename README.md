@@ -1,13 +1,24 @@
 # Dummybank
 
-Dummy Bank is a simulated banking system created with Django for testing and educational purposes. It provides a simulated environment for practicing and experimenting with banking operations and features without involving real customer data or financial transactions.
+Dummy Bank is a simulated banking system and a finance management application created with Django for testing and educational purposes. It provides a comprehensive solution for managing your finances, shopping lists, budgeting, and savings goals. With an intuitive interface and powerful features, it aims to help users stay organized and achieve their financial goals. 
 
 ## Features
 
 - Account Creation: Users can create new bank accounts with basic information such as name, address, and initial balance.
+
 - Deposits and Withdrawals: Users can deposit and withdraw funds from their accounts.
+
 - Balance Inquiry: Users can check their account balances.
-- Transfer Funds: Users can transfer funds between different bank accounts.
+- 
+- Financial Management: Track your income, expenses, and overall financial health. Update your account balance when receiving new funds to keep your financial situation up to date.
+
+- Shopping Lists: Create and manage shopping lists for your everyday needs. Add items, mark them as purchased, and have the amount deducted from your balance. Get notifications when your spending reaches a certain threshold to stay within your budget.
+
+- Budgeting and Savings Goals: Set up budgets and savings goals to track your spending and savings progress. Get insights into your spending habits and save towards specific targets.
+
+- Wishlist and Future Plans: Plan for future purchases by creating a wishlist of items you want to buy. Keep track of upcoming expenses and set aside funds accordingly.
+
+- Transfer Funds: Easily transfer funds to other users of the app. Stay organized when splitting expenses or sharing costs with friends and family.
 
 ## Getting Started
 

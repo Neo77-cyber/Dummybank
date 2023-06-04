@@ -63,7 +63,8 @@ def portfolio(request):
         
         except Portfolio.DoesNotExist:
             portfolio = None
-            account_total = 0    
+            account_total = 0
+            amount_to_transfer = None    
 
         return render(request, 'portfolio.html', {'portfolio': portfolio, 'account_total': account_total, 'amount_to_transfer': amount_to_transfer })
 

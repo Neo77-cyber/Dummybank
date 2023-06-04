@@ -60,7 +60,7 @@ class ShoppingList(models.Model):
         return self.item
 
 class ShoppingTransaction(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
     shopitem = models.ForeignKey(ShoppingList, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
 

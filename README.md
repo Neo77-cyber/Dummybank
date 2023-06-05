@@ -26,21 +26,22 @@ To get started with the Dummy Bank system, follow these steps:
 
 ## Installation
 1. Clone the repository: `git clone https://github.com/neo77-cyber/ Dummybank.git`
-2. Navigate to the project directory: `cd novaprojectz`
+2. Navigate to the project directory: `cd novaproject-django`
 3. Create a virtual environment: `pipenv shell`
 5. Install dependencies: `pipenv install -r requirements.txt`
 6. Apply database migrations: `python manage.py migrate`
 7. Start the development server: `python manage.py runserver`
 8. Access the app in your browser at `http://localhost:8000`
-9. Access FastAPI backend code seperately `cd financefastapi'
-10. exit previous virtual environment 'deactivate'
+9. Access FastAPI backend code seperately: exit previous virtual environment `deactivate`
+10.  Navigate to the fastapi directory: `cd novaproject-fastapi`
 11. create a virtual environment `pipenv shell`
 12. install dependecies `pipenv install -r requirements.txt`
-13. start the development server `uvicorn main:app --reload 
+13. start the development server `uvicorn main:app --reload`
 14. Access the app in your browser at `http://localhost:8000`
 
 ## Technologies Used
 - Django: Python web framework
+- FastAPI: python web framework
 - SQLite: Relational database management system
 - JavaScript, HTML, CSS: Frontend development
 - Bootstrap: CSS framework for responsive design

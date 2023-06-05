@@ -1,6 +1,6 @@
 # Dummybank-Finanace-Mnagement-Application
 
-Dummy Bank is a simulated banking system and a finance management application created with Django for testing and educational purposes. It provides a comprehensive solution for managing your finances, shopping lists, budgeting, and savings goals. With an intuitive interface and powerful features, it aims to help users stay organized and achieve their financial goals. 
+Dummy Bank is a simulated banking system and a finance management application for testing and educational purposes. It provides a comprehensive solution for managing your finances, shopping lists, budgeting, and savings goals. With an intuitive interface and powerful features, it aims to help users stay organized and achieve their financial goals. It offers separate implementations using Django and FastAPI to cater to different preferences and requirements
 
 ## Features
 

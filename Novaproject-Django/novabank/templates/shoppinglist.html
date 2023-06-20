@@ -228,12 +228,11 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ shoppinglist_form.as_p }}
-                <input class="btn btn-primary" type="submit" value="Update">
+                <input class="btn btn-primary" type="submit" value="Create">
             </form>
             <table class="table mb-4">
               <thead>
                 <tr>
-                  <th scope="col">No.</th>
                   <th scope="col">Todo item</th>
                   <th scope="col">Amount</th>
                   <th scope="col">Actions</th>
@@ -242,7 +241,6 @@
               {% for shopitem in shopitems %}
               <tbody>
                 <tr>
-                  <th scope="row">{{shopitem.id}}</th>
                   <td>{{shopitem.item}}</td>
                   <td>{{shopitem.price}}</td>
                   <td>

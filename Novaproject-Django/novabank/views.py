@@ -52,12 +52,13 @@ def createprofile(request):
 
 @login_required(login_url='home')
 def portfolio(request):
-        log_user = request.user       
+        log_user = request.user
+        portfolio = None       
         try:
-            portfolio = Portfolio.objects.filter(username=log_user)
-            account_total = Portfolio.objects.filter(username=log_user).values()[0]['account_total']
+            
 
             portfolio_instance = Portfolio.objects.get(username=log_user)
+            account_total = portfolio_instance.account_total
 
             amount_to_transfer = Transactions.objects.filter(username = portfolio_instance).values_list('amount_to_transfer', flat=True).order_by('-transaction_date')
         
@@ -181,7 +182,7 @@ def shop(request, pk):
             Portfolio.objects.filter(username=log_user).update(account_total=new_account_total)
 
             shoppinglist = get_object_or_404(ShoppingList, id=pk)
-            transaction = ShoppingTransaction(user=log_user, shopitem=shoppinglist, amount=shopping_price)
+            transaction = ShoppingTransaction(username=log_user, shopitem=shoppinglist, amount=shopping_price)
             transaction.save()
 
             messages.success(request, 'Purchase Successful!')

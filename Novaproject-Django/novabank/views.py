@@ -49,14 +49,11 @@ def createprofile(request):
     return render (request, 'createprofile.html', {'createprofileform': createprofile_form})
 
 
-
 @login_required(login_url='home')
 def portfolio(request):
         log_user = request.user
         portfolio = None       
         try:
-            
-
             portfolio_instance = Portfolio.objects.get(username=log_user)
             account_total = portfolio_instance.account_total
 
@@ -70,25 +67,23 @@ def portfolio(request):
         return render(request, 'portfolio.html', {'portfolio': portfolio, 'account_total': account_total, 'amount_to_transfer': amount_to_transfer })
 
 
-
-
 def updatebalance(request):
     log_user = request.user.id
+
     portfolio_instance, created = Portfolio.objects.get_or_create(username=log_user)
 
     if request.method == 'POST':
+
         update_pin_form = PortfolioUpdateForm(request.POST, instance=portfolio_instance)
+
         if update_pin_form.is_valid():
             update_pin_form.save()
             messages.success(request, 'PIN and balance updated successfully.')
             return redirect('portfolio')
-
     else:
         update_pin_form = PortfolioUpdateForm(instance=portfolio_instance)
 
     return render(request, 'updatebalance.html', {'update_pin_form': update_pin_form})
-
-
 
 
 @login_required(login_url='home')
@@ -96,7 +91,9 @@ def transfer(request):
     log_user = request.user.id
 
     if request.method == 'POST':
+
         form = TransactionsForm(request.POST)
+
         if form.is_valid():
             try:
                 pin = int(form.cleaned_data.get('transfer_pin'))
@@ -111,6 +108,7 @@ def transfer(request):
                     transaction.save()
 
                     receiver_username = form.cleaned_data.get('beneficiary_name')
+
                     try:
                         receiver_portfolio = Portfolio.objects.get(username__username=receiver_username)
                         receiver_portfolio.account_total += amount_to_transfer
@@ -132,7 +130,6 @@ def transfer(request):
         form = TransactionsForm()
 
     return render(request, 'transfer.html', {'form': form})
-
 
 
 @login_required
@@ -166,7 +163,6 @@ def deleteshoppingitem(request, pk):
         return redirect('shoppinglist')
 
 
-
 @login_required(login_url='home')
 def shop(request, pk):
     log_user = request.user
@@ -193,15 +189,7 @@ def shop(request, pk):
             messages.error(request, error_message)
             return redirect('shoppinglist')
 
-    
     return redirect('shoppinglist')
-
-    
-
-
-
-
-
 
 
 ###############################      LOGIN    #################################
@@ -248,18 +236,3 @@ def logout(request):
 
 
 
-# portfolio_instance = Portfolio.objects.get(username=log_user)
-
-        # Exclude transfer transactions made by the user
-        # amount_to_transfer = Transactions.objects.filter(username=portfolio_instance).exclude(beneficiary_name=log_user)
-
-        # total_transfers = amount_to_transfer.aggregate(sum=Sum('amount_to_transfer'))
-        # sum_transfers = total_transfers['sum']
-
-        # if sum_transfers is not None:
-        #     balance = portfolio_instance.account_total - sum_transfers
-        # else:
-        #     balance = portfolio_instance.account_total
-
-
-#   balance': balance, 'amount_to_transfer': amount_to_transfe

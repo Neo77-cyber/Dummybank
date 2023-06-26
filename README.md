@@ -11,7 +11,7 @@ Dummy Bank is a simulated banking system and a finance management application fo
 - Deposits and Withdrawals: Users can deposit and withdraw funds from their accounts.
 
 - Balance Inquiry: Users can check their account balances.
-- 
+
 - Financial Management: Track your income, expenses, and overall financial health. Update your account balance when receiving new funds to keep your financial situation up to date.
 
 - Shopping Lists: Create and manage shopping lists for your everyday needs. Add items, mark them as purchased, and have the amount deducted from your balance. Get notifications when your spending reaches a certain threshold to stay within your budget.

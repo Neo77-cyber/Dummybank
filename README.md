@@ -2,7 +2,7 @@
 
 Dummy Bank is a simulated banking system and a finance management application for testing and educational purposes. It provides a comprehensive solution for managing your finances, shopping lists, budgeting, and savings goals. With an intuitive interface and powerful features, it aims to help users stay organized and achieve their financial goals. It offers separate implementations using Django and FastAPI to cater to different preferences and requirements
 
-**Note: The application is live and deployed. You can access the live versions of the web app using the following links: [Live Demo](http://novafinancemanagement.pythonanywhere.com/) and [FastAPI Live Demo](https://finance-management-api.onrender.com/docs)**
+**Note: The application is live and deployed. You can access the live versions of the web app using the following links: [Live Demo](http://novafinancemgt.pythonanywhere.com/) and [FastAPI Live Demo](https://finance-management-api.onrender.com/docs)**
 
 ## Features
 

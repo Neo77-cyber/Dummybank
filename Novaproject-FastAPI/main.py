@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from typing import Optional, List
 from tortoise.contrib.fastapi import register_tortoise
 from routers import users, profile, transaction, budget
 from database.models import Portfolio, Transaction, ShoppingList, ShoppingTransaction

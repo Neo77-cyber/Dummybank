@@ -8,8 +8,8 @@ from database.schemas import PortfolioResponse,PortfolioCreateRequest
 
 
 
-router = APIRouter(prefix='/profile',
-                   tags=['Profile'])
+router = APIRouter(prefix='/portfolio',
+                   tags=['Portfolio'])
 
 
 @router.post("/create_profile", response_model = PortfolioResponse,

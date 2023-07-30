@@ -9,6 +9,9 @@ requests = "*"
 pillow = "*"
 django-debug-toolbar = "*"
 bandit = "*"
+rosetta = "*"
+django-localeurl = "*"
+django-rosetta = "*"
 
 [dev-packages]
 

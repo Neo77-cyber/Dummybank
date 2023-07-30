@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Nova Credit Bank</title>
+  <title>{% blocktrans %} Nova Credit Bank {% endblocktrans %}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -62,19 +64,13 @@
           <div class="carousel-item active" style="background-image: url({% static 'assets/img/hero-carousel/1.jpg' %})">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Focus On What Matters </h2>
-                <p class="animate__animated animate__fadeInUp">We are designed to support your journey toward life-long financial well-being</p>
-                <a href="{% url 'signin' %}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Log in</a>
+                <h2 class="animate__animated animate__fadeInDown">Focus On What Matters</h2>
+                <h4 style="color:rgb(237, 234, 222);" class="animate__animated animate__fadeInDown">We are designed to support your journey toward life-long financial well-being</h4>
+                <a href="{% url 'signin' %}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Log In</a>
               </div>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
       </div>
     </div>
   </section><!-- End Hero Section -->
@@ -86,7 +82,8 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline services-head text-center">
-              <h2>Why Choose Us</h2>
+              
+              
             </div>
           </div>
         </div>
@@ -198,75 +195,7 @@
       </div>
     </div><!-- End Services Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <div id="testimonials" class="testimonials">
-      <div class="container">
-
-        <div class="testimonials-slider swiper">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{%static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{%static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{%static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{%static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </div><!-- End Testimonials Section -->
+  
 
     <!-- ======= Blog Section ======= -->
     <div id="blog" class="blog-area">
@@ -303,7 +232,7 @@
                     <a>Julia's first auto buy</a>
                   </h4>
                   <p>
-                    If someone were to ask me if they should become a member, I would tell them run to the nearest Nova Credit bank as soon as possible!
+                    NovaFunds has revolutionized the way I manage my finances!  It's like having a personal finance advisor in my pocket. I highly recommend NovaFunds to anyone seeking financial clarity and control
                   </p>
                 </div>
                 
@@ -333,7 +262,7 @@
                     <a>Mario's new car</a>
                   </h4>
                   <p>
-                    Whether it be mortgages, car loans, extended warranty, checking/savings accounts everything, I can trust that Nova Credit Bank will be the right and best choice
+                    Novacreditbank security features also give me peace of mind, knowing my financial data is protected. Thank you, NovaWallet, for making my financial management efficient and stress-free
                   </p>
                 </div>
                 
@@ -363,7 +292,7 @@
                     <a>Lisa's Financial Wellness Story </a>
                   </h4>
                   <p>
-                    I was paired with an amazing Nova staff member who told me where I was and what I needed to do to get where I wanted to be. She would call regularly to see where I was in the process and to offer her assistance where it may be needed
+                    I can easily categorize transactions and generate comprehensive reports.
                   </p>
                 </div>
                
@@ -414,14 +343,7 @@
           <div class="col-md-4">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>Why Nova Credit Bank</h4>
-                <div class="footer-contacts">
-                  <ul>
-                    <li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
-                    <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
-                    <li><a class="nav-link scrollto" href="{% url 'services' %}">Services</a></li>
-                  </ul>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -432,9 +354,8 @@
               <div class="footer-head">
                 <h4>Help & Support</h4>
                 <div class="footer-contacts">
-                  <ul>
-                    <li><a class="nav-link scrollto active" href="{% url 'contact' %}">Contacts</a></li>
-                  </ul>
+                  +2348145858941
+              
                 </div>
               </div>
             </div>

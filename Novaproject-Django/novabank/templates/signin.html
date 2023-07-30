@@ -59,7 +59,7 @@
               <div class="container">
                 <style>
                       form {
-                      width: 400px;
+                      width: 300px;
                       margin: 50px auto;
                       padding: 20px;
                       background-color: #f5f5f5;
@@ -104,9 +104,12 @@
                       color: red;
                     }
                 </style>
+                <div class="container my-5 text-center">
+                {% if messages%}
                 {% for message in messages %}
                 <h8> {{message}}</h8>
                 {% endfor %}
+                {% endif %}
                 <form action = "" method="POST" autocomplete="on">
                   {%csrf_token%}
                   <label for="username">User ID:</label>
@@ -115,20 +118,14 @@
                   <label for="password">Password:</label>
                   <input type="password" id="password" name="password" required>
                   <br>
-                  <input type="submit" value="Log in">
+                  <input type="submit" value="Log In">
                 </form>
-                <p><h6>Don't have an account? <a href="{%url 'register'%}">Signup</h6></a></p>
-                
+
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
       </div>
     </div>
   </section><!-- End Hero Section -->

@@ -1,6 +1,4 @@
 {% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,32 +6,36 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Nova Credit Bank LLC</title>
+  <title>Nova Credit Bank</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon 2.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon 2.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'dashboard_assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'dashboard_assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{% static 'assets/vendor2/bootstrap 2/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor2/bootstrap-icons 2/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor2/boxicons 2/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor2/quill 2/quill.snow.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor2/quill 2/quill.bubble.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor2/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor2/simple-datatables/style.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css2/style.css' %}" rel="stylesheet">
+  <link href="{% static 'dashboard_assets/css/style.css' %}" rel="stylesheet">
 
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.3.1
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
@@ -43,16 +45,60 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="{% url 'portfolio' %}" class="logo d-flex align-items-center">
-
         <span class="d-none d-lg-block">Nova Credit Bank</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-    <nav class="header-nav ms-auto">
-      <li class="nav-item dropdown pe-3">
-        <span>{{user.username}}</span>
-      </li><!-- End Profile Nav -->
 
+    <div class="search-bar">
+    </div><!-- End Search Bar -->
+  
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.username}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{user.username}}</h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'profile' %}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'FAQ' %}">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
@@ -68,186 +114,213 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-    </ul>
-    <ul class="sidebar-nav" id="sidebar-nav">
+
       <li class="nav-item">
-        
-        <ul class="sidebar-nav" id="sidebar-nav">
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'logout' %}">
-              <i class="bi bi-grid"></i>
-              <span>Logout</span>
-            </a>
-          </li><!-- End Dashboard Nav -->
-      </li><!-- End Components Nav -->
+        <a class="nav-link collapsed" href="{% url 'transfer' %}">
+          <i class="bi bi-card-list"></i>
+          <span>Transfer</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'shoppinglist' %}">
+          <i class="bi bi-hourglass-bottom"></i>
+          <span>Shop & Save</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+      
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'profile' %}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'exchangerate' %}">
+          <i class="bi bi-envelope"></i>
+          <span>Exchange Rate</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'logout' %}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Logout</span>
+        </a>
+      </li><!-- End Login Page Nav -->
     </ul>
-    </li><!-- End Forms Nav -->
-    </li><!-- End Icons Nav -->
-  </aside>
+
+  </aside><!-- End Sidebar-->
+
   <main id="main" class="main">
+
     <div class="pagetitle">
       <h1>Create Profile</h1>
       <nav>
         <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'portfolio' %}">Portfolio</a></li>
+          <li class="breadcrumb-item">Create Profile</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Create Profile</h5>
-              <!-- Browser Default Validation -->
-              <section id="contact" class="contact">
-                <style>
-                  /* *, *:before, *:after {
-                 -moz-box-sizing: border-box;
-                 -webkit-box-sizing: border-box;
-                 box-sizing: border-box;
-               } */
 
-                  body {
-                    font-family: 'Nunito', sans-serif;
-                    color: #384047;
-                  }
+    <section id="contact" class="contact">
+      <style>
+        /* *, *:before, *:after {
+       -moz-box-sizing: border-box;
+       -webkit-box-sizing: border-box;
+       box-sizing: border-box;
+     } */
 
-                  form {
-                    margin: 10px 2px;
-                    padding: 30px 80px;
-                    background: #f4f7f8;
-                    border-radius: 8px;
-                  }
+        body {
+          font-family: 'Nunito', sans-serif;
+          color: #384047;
+        }
 
-                  h1 {
-                    margin: 0 0 30px 0;
-                    text-align: center;
-                  }
+        form {
+          margin: 10px 2px;
+          padding: 30px 80px;
+          background: #f4f7f8;
+          border-radius: 8px;
+        }
 
-                  .summernote {
-                    margin-top: 200px;
-                  }
+        h1 {
+          margin: 0 0 30px 0;
+          text-align: center;
+        }
+
+        .summernote {
+          margin-top: 200px;
+        }
 
 
-                  input[type="text"],
-                  input[type="password"],
-                  input[type="date"],
-                  input[type="datetime"],
-                  input[type="email"],
-                  input[type="number"],
-                  textarea,
-                  select {
-                    background: rgba(255, 255, 255, 0.1);
-                    border: none;
-                    font-size: 16px;
-                    height: auto;
-                    margin: 0;
-                    outline: 0;
-                    padding: 15px;
-                    width: 100%;
-                    background-color: #e8eeef;
-                    color: #8a97a0;
-                    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-                    margin-bottom: 30px;
-                  }
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        input[type="datetime"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+          background: rgba(255, 255, 255, 0.1);
+          border: none;
+          font-size: 16px;
+          height: auto;
+          margin: 0;
+          outline: 0;
+          padding: 15px;
+          width: 100%;
+          background-color: #e8eeef;
+          color: #8a97a0;
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+          margin-bottom: 30px;
+        }
 
-                  input[type="radio"],
-                  input[type="checkbox"] {
-                    margin: 0 4px 8px 0;
-                  }
+        input[type="radio"],
+        input[type="checkbox"] {
+          margin: 0 4px 8px 0;
+        }
 
-                  select {
-                    padding: 6px;
-                    height: 32px;
-                    border-radius: 2px;
-                  }
+        select {
+          padding: 6px;
+          height: 32px;
+          border-radius: 2px;
+        }
 
-                  .cool {
-                    padding: 19px 39px 18px 39px;
-                    color: #FFF;
-                    background-color: #4bc970;
-                    font-size: 18px;
-                    text-align: center;
-                    font-style: normal;
-                    border-radius: 5px;
-                    width: 30%;
-                    border: 1px solid #3ac162;
-                    border-width: 1px 1px 3px;
-                    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-                    margin-bottom: 10px;
-                  }
+        .cool {
+          padding: 19px 39px 18px 39px;
+          color: #FFF;
+          background-color: #4bc970;
+          font-size: 18px;
+          text-align: center;
+          font-style: normal;
+          border-radius: 5px;
+          width: 30%;
+          border: 1px solid #3ac162;
+          border-width: 1px 1px 3px;
+          box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+          margin-bottom: 10px;
+        }
 
-                  fieldset {
-                    margin-bottom: 30px;
-                    border: none;
-                  }
+        fieldset {
+          margin-bottom: 30px;
+          border: none;
+        }
 
-                  legend {
-                    font-size: 1.4em;
-                    margin-bottom: 10px;
-                  }
+        legend {
+          font-size: 1.4em;
+          margin-bottom: 10px;
+        }
 
-                  label {
-                    display: block;
-                    margin-bottom: 8px;
-                  }
+        label {
+          display: block;
+          margin-bottom: 8px;
+        }
 
-                  label.light {
-                    font-weight: 300;
-                    display: inline;
-                  }
+        label.light {
+          font-weight: 300;
+          display: inline;
+        }
 
-                  .number {
-                    background-color: #5fcf80;
-                    color: #fff;
-                    height: 30px;
-                    width: 30px;
-                    display: inline-block;
-                    font-size: 0.8em;
-                    margin-right: 4px;
-                    line-height: 30px;
-                    text-align: center;
-                    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-                    border-radius: 100%;
-                  }
+        .number {
+          background-color: #5fcf80;
+          color: #fff;
+          height: 30px;
+          width: 30px;
+          display: inline-block;
+          font-size: 0.8em;
+          margin-right: 4px;
+          line-height: 30px;
+          text-align: center;
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+          border-radius: 100%;
+        }
 
-                  @media screen and (max-width: 480px) {
+        @media screen and (max-width: 480px) {
 
-                    form {
-                      width: fit-content;
-                    }
+          form {
+            width: fit-content;
+          }
 
-                  }
-                </style>
-                {% if error_message %}
-                <p class="error">{{ error_message }}</p>
-                {% endif %}
-                <form action="{% url 'createprofile' %}" method="POST" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{createprofileform.as_div}}
-                  <input class="btn btn-primary" type="submit" value="Create Profile">
-                </form>
-              </section><!-- End Contact Section -->
-              <!-- End Browser Default Validation -->
-              <!-- ======= Footer ======= -->
-            </div>
-            </footer><!-- End Footer -->
+        }
+      </style>
+      {% if error_message %}
+      <p class="error">{{ error_message }}</p>
+      {% endif %}
+      <form action="{% url 'createprofile' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{createprofileform.as_div}}
+        <input class="btn btn-primary" type="submit" value="Create Profile">
+      </form>
+    </section><!-- End Contact Section -->
 
-            <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
+  </main><!-- End #main -->
 
-            <!-- Vendor JS Files -->
-            <script src="{% static 'assets/vendor2/apexcharts/apexcharts.min.js' %}"></script>
-            <script src="{% static 'assets/vendor2/bootstrap 2/js/bootstrap.bundle.min.js' %}"></script>
-            <script src="{% static 'assets/vendor2/chart.js/chart.min.js' %}"></script>
-            <script src="{% static 'assets/vendor2/echarts/echarts.min.js' %}"></script>
-            <script src="{% static 'assets/vendor2/quill 2/quill.min.js' %}"></script>
-            <script src="{% static 'assets/vendor2/simple-datatables/simple-datatables.js' %}"></script>
-            <script src="{% static 'assets/vendor2/tinymce/tinymce.min.js' %}"></script>
-            <script src="{% static 'assets/vendor2/php-email-form 2/validate.js' %}"></script>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Nova Credit Bank</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+     
+    </div>
+  </footer><!-- End Footer -->
 
-            <!-- Template Main JS File -->
-            <script src="{% static 'assets/js2/main 2.js' %}"></script>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'dashboard_assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/chart.js/chart.min.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/quill/quill.min.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'dashboard_assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'dashboard_assets/js/main.js' %}"></script>
 
 </body>
 

@@ -6,29 +6,23 @@ from .models import Portfolio, Transactions, ShoppingList, ShoppingTransaction
 import requests
 from .forms import TransactionsForm, UserForm, PortfolioUpdateForm, CreateProfileForm, ShoppingListForm
 from django.contrib import messages
-from django.db.models import Sum
 from django.db import IntegrityError
 
 # Create your views here.
 
 
+
 def home(request):
     return render(request, 'home.html')
 
-def about(request):
-    return render(request, 'about.html')
+def exchange_rates(request):
+    endpoint = "https://v6.exchangerate-api.com/v6/9633a5f18ca5b8ccc65aaa80/latest/EUR"
+    response = requests.get(endpoint)
+    data = response.json()
+    rates = data['conversion_rates']
 
-def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'exchange_rates.html', {'rates': rates})
 
-def services(request):
-    return render(request, 'services.html')
-
-# def get_exchange_rates():
-    # endpoint = "https://v6.exchangerate-api.com/v6/9633a5f18ca5b8ccc65aaa80/latest/NGN"
-    # response = requests.get(endpoint)
-    # data = response.json()
-    # return data['conversion_rates']
 
 def createprofile(request):
     createprofile_form = CreateProfileForm()
@@ -48,14 +42,26 @@ def createprofile(request):
 
     return render (request, 'createprofile.html', {'createprofileform': createprofile_form})
 
+def profile(request):
+    portfolio = None 
+    log_user = request.user
+    try:
+            portfolio = Portfolio.objects.filter(username= log_user)
+    except Portfolio.DoesNotExist:
+            portfolio = None   
+    
+    return render(request, 'profile.html', {'portfolio': portfolio})
+
 
 @login_required(login_url='home')
 def portfolio(request):
         log_user = request.user
         portfolio = None       
         try:
+            portfolio = Portfolio.objects.filter(username= log_user)
             portfolio_instance = Portfolio.objects.get(username=log_user)
             account_total = portfolio_instance.account_total
+            
 
             amount_to_transfer = Transactions.objects.filter(username = portfolio_instance).values_list('amount_to_transfer', flat=True).order_by('-transaction_date')
         
@@ -229,6 +235,10 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('signin')
+
+@login_required(login_url='home')
+def FAQ(request):
+    return render(request, 'FAQ.html')
 
 
 
